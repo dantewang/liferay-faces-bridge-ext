@@ -42,13 +42,13 @@ public class LiferayPortletRequest {
 	// Private Constants
 	private static final String METHOD_NAME_GET_ORIGINAL_HTTP_SERVLET_REQUEST = "getOriginalHttpServletRequest";
 	private static final String METHOD_NAME_GET_PORTLET = "getPortlet";
-	private static final String REQUEST_SCOPED_FQCN = "jakarta.faces.bean.RequestScoped";
+	private static final String REQUEST_SCOPED_FQCN = "jakarta.enterprise.context.RequestScoped";
 
 	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(LiferayPortletRequest.class);
 
 	// Private Data Members
-	private final boolean distinctRequestScopedManagedBeans;
+	private final boolean distinctRequestScopedBeans;
 	private final LiferayHttpServletRequest liferayHttpServletRequest;
 	private final Portlet portlet;
 	private final List<String> propertyNameList;
@@ -66,7 +66,7 @@ public class LiferayPortletRequest {
 		}
 
 		this.wrappedPortletRequest = portletRequest;
-		this.distinctRequestScopedManagedBeans = LiferayPortletConfigParam.DistinctRequestScopedManagedBeans
+		this.distinctRequestScopedBeans = LiferayPortletConfigParam.DistinctRequestScopedBeans
 			.getBooleanValue(portletConfig);
 
 		Portlet portlet = null;
@@ -160,22 +160,19 @@ public class LiferayPortletRequest {
 
 			// FACES-1446: Strictly enforce Liferay Portal's private-request-attribute feature so that each portlet
 			// will have its own managed-bean instance.
-			if (distinctRequestScopedManagedBeans) {
+			if (distinctRequestScopedBeans) {
 
 				if (attributeValue != null) {
 
 					boolean requestScopedBean = false;
 					Annotation[] annotations = attributeValue.getClass().getAnnotations();
 
-					if (annotations != null) {
+					for (Annotation annotation : annotations) {
 
-						for (Annotation annotation : annotations) {
+						if (annotation.annotationType().getName().equals(REQUEST_SCOPED_FQCN)) {
+							requestScopedBean = true;
 
-							if (annotation.annotationType().getName().equals(REQUEST_SCOPED_FQCN)) {
-								requestScopedBean = true;
-
-								break;
-							}
+							break;
 						}
 					}
 
