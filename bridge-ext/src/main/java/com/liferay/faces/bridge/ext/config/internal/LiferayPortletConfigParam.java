@@ -13,6 +13,7 @@
  */
 package com.liferay.faces.bridge.ext.config.internal;
 
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.context.ExternalContext;
 import jakarta.portlet.PortletConfig;
 
@@ -26,10 +27,10 @@ import com.liferay.faces.util.helper.BooleanHelper;
 public enum LiferayPortletConfigParam implements ConfigParam<PortletConfig> {
 
 	/**
-	 * Flag indicating whether or not JSF {@link jakarta.faces.bean.ManagedBean} classes annotated with {@link
-	 * jakarta.faces.bean.RequestScoped} should be distinct for each portlet. Default value is false.
+	 * Flag indicating whether or not bean classes annotated with {@link
+	 * RequestScoped} should be distinct for each portlet. Default value is false.
 	 */
-	DistinctRequestScopedManagedBeans("com.liferay.faces.bridge.distinctRequestScopedManagedBeans", false),
+	DistinctRequestScopedBeans("com.liferay.faces.bridge.distinctRequestScopedBeans", false),
 
 	/** Default value for Liferay Portal 6.2 is false, default value for 7.0+ is true. */
 	RequestDispatcherForwardEnabled("com.liferay.faces.bridge.requestDispatcherForwardEnabled", true),
