@@ -23,7 +23,7 @@
 		<client-window-factory>com.liferay.faces.bridge.ext.lifecycle.internal.ClientWindowFactoryLiferayImpl</client-window-factory>
 		<render-kit-factory>com.liferay.faces.bridge.ext.renderkit.html_basic.internal.RenderKitFactoryLiferayImpl</render-kit-factory>
 		<factory-extension>
-			<bridge:bridge-faces-context-factory>com.liferay.faces.bridge.ext.context.internal.BridgeFacesContextFactoryImpl</bridge:bridge-faces-context-factory>
+			<bridge:bridge-faces-context-factory>com.liferay.faces.bridge.ext.internal.BridgeFacesContextFactoryImpl</bridge:bridge-faces-context-factory>
 			<bridge:bridge-portlet-request-factory>com.liferay.faces.bridge.ext.filter.internal.BridgePortletRequestFactoryLiferayImpl</bridge:bridge-portlet-request-factory>
 			<bridge:bridge-portlet-response-factory>com.liferay.faces.bridge.ext.filter.internal.BridgePortletResponseFactoryLiferayImpl</bridge:bridge-portlet-response-factory>
 			<bridge:bridge-portlet-config-factory>com.liferay.faces.bridge.ext.filter.internal.BridgePortletConfigFactoryLiferayImpl</bridge:bridge-portlet-config-factory>
