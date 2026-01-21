@@ -38,7 +38,7 @@ import java.util.Objects;
 /**
  * @author  Dante Wang
  */
-public class BridgeFacesContextFactoryImpl implements BridgeFacesContextFactory {
+public class BridgeFacesContextFactoryImpl extends BridgeFacesContextFactory {
 
 	@Override
 	public FacesContext getFacesContext(FacesContextFactory facesContextFactory, PortletContext portletContext, PortletRequest portletRequest, PortletResponse portletResponse, Lifecycle lifecycle) throws FacesException {
