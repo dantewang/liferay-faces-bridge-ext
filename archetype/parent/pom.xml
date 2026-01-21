@@ -68,6 +68,12 @@
 											com.liferay.faces.util.osgi.internal.FacesThinWabInitializer
 											com.liferay.faces.bridge.servlet.BridgeServletContainerInitializer
 										</echo>
+										<echo file="${project.build.outputDirectory}/META-INF/services/com.sun.faces.spi.annotationprovider">com.liferay.faces.util.osgi.mojarra.spi.internal.AnnotationProviderOSGiImpl
+										</echo>
+										<echo file="${project.build.outputDirectory}/META-INF/services/com.sun.faces.spi.FaceletConfigResourceProvider">com.liferay.faces.util.osgi.mojarra.spi.internal.FaceletConfigResourceProviderOSGiImpl
+										</echo>
+										<echo file="${project.build.outputDirectory}/META-INF/services/com.sun.faces.spi.FacesConfigResourceProvider">com.liferay.faces.util.osgi.mojarra.spi.internal.FacesConfigResourceProviderOSGiImpl
+										</echo>
 										<echo file="${project.build.outputDirectory}/META-INF/services/com.sun.faces.util.cdi11.CDIUtil">com.sun.faces.util.cdi11.CDIUtilImpl
 										</echo>
 									</target>
